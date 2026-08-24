@@ -39,7 +39,7 @@ func NewSyncWindow(clk ProcessClock) *SyncWindow {
 }
 
 func (p *SyncWindow) Ready(startedAt time.Time) bool {
-	return time.Since(startedAt) >= model.SyncWindow
+	return p.window.Satisfied(p.clk, startedAt)
 }
 
 func (p *SyncWindow) Require(startedAt time.Time) error {
