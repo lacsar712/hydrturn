@@ -231,6 +231,10 @@ func (a *App) runTick(ctx context.Context) error {
 	_ = a.store.UpdateTurbineln(a.cfg.UnitID, turbinelnReading)
 	a.refreshPermissives(a.Snapshot())
 	a.telemetry.RecordTick(firing)
+	if firing && a.turbineln.Pressure().TripRequired(turbinelnReading.SteamPressurePSI) {
+		_ = a.Trip(ctx, "steam_pressure")
+		return nil
+	}
 	if a.draftube.TripRequired(draftubeReading) {
 		_ = a.Trip(ctx, "draftube_level")
 	}
