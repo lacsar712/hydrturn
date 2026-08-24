@@ -15,6 +15,6 @@ func CloneDraftubeSnapshot(s model.PlantSnapshot) DraftubeSnapshotView {
 		Draftube:     s.Draftube,
 		Revision: s.Revision,
 	}
-	out.Alarms = s.Alarms[:len(s.Alarms):len(s.Alarms)]
+	out.Alarms = append([]model.AlarmEvent(nil), s.Alarms...)
 	return out
 }
