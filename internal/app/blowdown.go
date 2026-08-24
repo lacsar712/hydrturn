@@ -33,7 +33,7 @@ func (a *App) ReliefAfterShutdown(ctx context.Context, openingPct float64) error
 		return fmt.Errorf("plant not shut down")
 	}
 	if openingPct >= maxReliefOpeningPct {
-		return fmt.Errorf("unknown fault")
+		return fmt.Errorf("relief: %w", model.ErrReliefLimit)
 	}
 	return nil
 }
