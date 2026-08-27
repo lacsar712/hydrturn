@@ -1,6 +1,6 @@
 # hydrturn
 
-Hydro turbine wicket-gate control with operator HMI under internal/web.
+hydrturn 是一套水轮机导叶工业过程控制系统，用于导叶开度、流量调节与操作员 HMI。
 
 ## Requirements
 
